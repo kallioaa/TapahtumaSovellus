@@ -1,2 +1,8 @@
 # env
 tapahtumasovellus_env/
+
+# config file
+config.py
+
+# cache files
+__pycache__*
