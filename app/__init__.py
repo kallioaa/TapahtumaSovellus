@@ -12,5 +12,7 @@ def not_found(error):
 
 
 from app.mod_auth.controllers import mod_auth  # nopep8
+from app.mod_map.controllers import mod_map  # nopep8
 
 app.register_blueprint(mod_auth)
+app.register_blueprint(mod_map)

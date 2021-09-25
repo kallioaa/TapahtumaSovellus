@@ -1,15 +1,21 @@
-from flask import render_template, Blueprint
+from flask import render_template, redirect, Blueprint, url_for, session
 from app.mod_auth.forms import LoginForm, CreateUserForm
-from app.mod_auth.models import *
+from app.mod_auth.models import add_to_database, get_user_id
+from passlib.hash import pbkdf2_sha256
 
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 # login
 
 
-@mod_auth.route('/login', methods=['GET', 'POST'])
+@mod_auth.route('/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        username = form["username"].data
+        user_id = get_user_id(username)
+        session["user_id"] = user_id
+        return redirect(url_for("map.map"))
     return render_template("auth/login.html", form=form)
 
 # new user creation
@@ -18,4 +24,17 @@ def login():
 @mod_auth.route('/new_user', methods=['GET', 'POST'])
 def new_user():
     form = CreateUserForm()
+    if form.validate_on_submit():  # if true we can safely create a new user
+        username = form["username"].data
+        password = form["password"].data
+        password_hashed = pbkdf2_sha256.hash(password)
+        email = form["email"].data
+        add_to_database(username, password_hashed, email)
+        return redirect(url_for(".login"))
     return render_template("auth/new_user.html", form=form)
+
+
+@mod_auth.route("log_out", methods=["GET", "POST"])
+def log_out():
+    session.pop("user_id", None)
+    return redirect(url_for(".login"))
