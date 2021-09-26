@@ -1,21 +1,27 @@
 from flask import config
 from flask_sqlalchemy import SQLAlchemy
 from app import app
+from os import getenv
 
 db = SQLAlchemy(app)
 
-fd = open(app.config.get("SQL_TABLES_SCHEMA"), 'r')
-sqlFile = fd.read()
-fd.close()
+# create tables from sql schema file if we don't launch in Heroku since it creates concurrency issues
 
-# sql commands
-sqlCommands = sqlFile.split(';')
+is_prod = getenv('IS_HEROKU', None)
+if not is_prod:
 
-# dropping empty commands
-sqlCommands = list(filter(None, sqlCommands))
+    fd = open(app.config.get("SQL_TABLES_SCHEMA"), 'r')
+    sqlFile = fd.read()
+    fd.close()
 
-# creating each table
-for command in sqlCommands:
-    db.session.execute(command + ";")
+    # sql commands
+    sqlCommands = sqlFile.split(';')
 
-db.session.commit()
+    # dropping empty commands
+    sqlCommands = list(filter(None, sqlCommands))
+
+    # creating each table
+    for command in sqlCommands:
+        db.session.execute(command + ";")
+
+    db.session.commit()

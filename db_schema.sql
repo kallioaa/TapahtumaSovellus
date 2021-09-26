@@ -4,7 +4,6 @@ CREATE TABLE IF NOT EXISTS users (
     password TEXT,
     email TEXT UNIQUE
 );
-
 CREATE TABLE IF NOT EXISTS admin (
     user_id INTEGER REFERENCES users
 );
