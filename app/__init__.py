@@ -9,7 +9,7 @@ is_prod = getenv('IS_HEROKU', None)
 
 if is_prod:
     app.secret_key = getenv("SECRET_KEY")
-    app.config["SQLALCHEMY_DATABASE_URI"] = getenv("SQLALCHEMY_DATABASE_URI")
+    app.config["SQLALCHEMY_DATABASE_URL"] = getenv("SQLALCHEMY_DATABASE_URL")
     app.config["SQL_TABLES_SCHEMA"] = getenv("SQL_TABLES_SCHEMA")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = getenv("SQLALCHEMY_TRACK_MODIFICATIONS")  # nopep8
 else:
