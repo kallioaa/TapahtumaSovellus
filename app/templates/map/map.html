@@ -7,10 +7,10 @@
         <div class="col">
             {% if session.user_id%}
             <h1> The map will exist here.</h1>
-            <a href="/auth/log_out" class="text-info"> Log Out </a>
+            <a href="{{ url_for('auth.log_out') }}"  class="text-info"> Log Out </a>
             {% else %}
             <p> Please login first.</p>
-            <a href="/auth/" class="text-info"> Login </a>
+            <a href="{{ url_for('auth.log_out') }}" class="text-info"> Login </a>
             {% endif %}
         </div>
     </div>

@@ -9,7 +9,7 @@
                 <h4 class="card-title mb-4 mt-1">Sign in</h4>
                 {{ wtf.quick_form(form) }}
                 <br />
-                <a href="/auth/new_user" class="text-info">New user</a>
+                <a href="{{ url_for('auth.new_user') }}" class="text-info">New user</a>
                 </div> <!-- card.// -->                
         </div>
     </div>
