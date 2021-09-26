@@ -45,7 +45,7 @@ class LoginForm(FlaskForm):
     username = StringField("username", validators=[InputRequired(), Length(
         min=3, max=20, message="Username length between 3 and 20 characters!")])
     password = PasswordField("password", validators=[InputRequired(), Length(
-        min=3, max=15, message="Password length between 3 and 20 characters!")])
+        min=3, max=50, message="Password length between 3 and 50 characters!")])
     submit = SubmitField('Login', validators=[
                          validate_username_not_existing, validate_login_authorized])
 
@@ -54,7 +54,7 @@ class CreateUserForm(FlaskForm):
     username = StringField("username", validators=[
                            InputRequired(), Length(min=3, max=20, message="Username length between 3 and 20 characters!")])
     password = PasswordField("password", validators=[
-                             InputRequired(), Length(min=3, max=15, message="Password length between 3 and 20 characters!")])
+                             InputRequired(), Length(min=3, max=50, message="Password length between 3 and 50 characters!")])
     password_repeat = PasswordField("password repeat", validators=[
                                     InputRequired(), EqualTo("password", message="Passwords do not match")])
     email = StringField("email", validators=[
