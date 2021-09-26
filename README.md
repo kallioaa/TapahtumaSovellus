@@ -1,5 +1,15 @@
 # TapahtumaSovellus
 
-Ravintolasovelluksen idean motivoiva. Tapahtumista tallennettaisiin kuitenkin eri tietoja kuin ravintoloista, esimerkiksi loppumis ja alkamisajat aukioloaikojen sijaan.
+Tapahtumasovelluksesssa voit lisätä tapahtumia karttalle. Tapahtumiin voit merkitä ajankohdan, linkkejä, hinnan. Käyttäjät voivat ilmoittautua eri tapahtumiin, jokaisesta tapahtumasta löytyy ilmoittautuneiden käyttäjien tietoja ja yhteenvetoja.
 
-Sovellus näyttäisi kartalla vain tapahtumat, jotka olisivat joko tulossa tai käynnissä. Menneet tapahtuvat tallentuisivat kuitenkin historiaan.
+# Sovelluksen toiminta tarkemmin
+
+- Käyttäjä voi luoda tunnuksen X
+- Käyttäjä voi kirjautua sisään X
+- Käyttäjä voi olla joko normaali tai admin X
+- Käyttäjä voi katsoa karttaa
+- Käyttäjä voi lisätä tapahtuman
+- Käyttäjä voi osallistua tapahtumaan
+- Normaali Käyttäjä voi poistaa oman tapahtumansa
+- Admin käyttäjä voi poistaa minkä tahansa tapahtuman
+- Admin käyttäjä voi tehdä normaalista käyttäjästä admin käyttäjän
