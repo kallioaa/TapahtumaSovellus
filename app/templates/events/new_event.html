@@ -1,18 +1,17 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
-{% block title %} New User {%  endblock %}
+{% block title %} New Event {% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col">
             <div class="card">
-                <h4 class="card-title mb-4 mt-1">Create a new user</h4>
+                <h4 class="card-title mb-4 mt-1">Create a new event</h4>
                 {{ wtf.quick_form(form) }}
                 <br />
-                <a href="{{ url_for('auth.log_in') }}" class="text-info">Login</a>
-                </div> <!-- card.// -->             
+                <a href="{{ url_for('auth.log_in') }}" class="text-info">Create</a>
+            </div> <!-- card.// -->
         </div>
     </div>
 </div>
 {% endblock %}
-

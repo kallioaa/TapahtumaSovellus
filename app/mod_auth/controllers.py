@@ -9,14 +9,14 @@ mod_auth = Blueprint('auth', __name__, url_prefix='/')
 
 
 @mod_auth.route('/', methods=['GET', 'POST'])
-def login():
+def log_in():
     form = LoginForm()
     if form.validate_on_submit():
         username = form["username"].data
         user_id = get_user_id(username)
         session["user_id"] = user_id
-        return redirect(url_for("map.map"))
-    return render_template("auth/login.html", form=form)
+        return redirect(url_for("map.map_view"))
+    return render_template("auth/log_in.html", form=form)
 
 # new user creation
 
@@ -30,11 +30,11 @@ def new_user():
         password_hashed = pbkdf2_sha256.hash(password)
         email = form["email"].data
         add_to_database(username, password_hashed, email)
-        return redirect(url_for(".login"))
+        return redirect(url_for(".log_in"))
     return render_template("auth/new_user.html", form=form)
 
 
 @mod_auth.route("log_out", methods=["GET", "POST"])
 def log_out():
     session.pop("user_id", None)
-    return redirect(url_for(".login"))
+    return redirect(url_for(".log_in"))
