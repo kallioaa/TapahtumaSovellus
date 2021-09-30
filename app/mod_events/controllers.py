@@ -1,7 +1,7 @@
 from operator import add
 from flask import render_template, redirect, Blueprint, url_for
 from flask_googlemaps import Map
-from app.mod_events.forms import NameForm, AddressForm, AddressFormSubmit, StartAndEndTimeForm
+from app.mod_events.forms import NameForm, AddressForm, StartAndEndTimeForm
 
 
 mod_events = Blueprint('events', __name__, url_prefix='/events')
@@ -28,8 +28,7 @@ def new_event_address():
             lng=lng,
             markers=[(lat, lng)]
         )
-        print("oee")
-        return render_template("events/address_form.html", form=form, map=map, title=title, form_submit=AddressFormSubmit())
+        return render_template("events/address_form.html", form=form, map=map, title=title)
     return render_template("general/basic_form.html", form=form, title=title)
 
 

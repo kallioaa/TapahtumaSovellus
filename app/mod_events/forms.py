@@ -24,9 +24,6 @@ class NameForm(FlaskForm):
 class AddressForm(FlaskForm):
     address = StringField("address", validators=[
                           InputRequired(), validate_address])
-
-
-class AddressFormSubmit(FlaskForm):
     submit = SubmitField("Submit address")
 
 
