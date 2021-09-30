@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import googlemaps
 from flask_bootstrap import Bootstrap
 from flask_googlemaps import GoogleMaps
 from os import getenv
@@ -18,7 +19,8 @@ else:
     app.config.from_object("config")
 
 Bootstrap(app)
-GoogleMaps(app)
+GoogleMaps(app)  # for maps
+gmaps = googlemaps.Client(key=app.config.get("GOOGLEMAPS_KEY"))
 
 
 @app.errorhandler(404)

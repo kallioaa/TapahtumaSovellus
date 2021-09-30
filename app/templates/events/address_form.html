@@ -1,0 +1,36 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} {{ title }} {% endblock %}
+{% block head %} {{ map.js }} {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <h4 class="card-title mb-4 mt-1">{{ title }}</h4>
+                {{ wtf.quick_form(form) }}
+            </div> <!-- card.// -->
+        </div>
+    </div>
+</div>
+{% if map %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                {{ map.html }}
+            </div> <!-- card.// -->
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                {{ wtf.quick_form(form_submit) }}
+            </div> <!-- card.// -->
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
