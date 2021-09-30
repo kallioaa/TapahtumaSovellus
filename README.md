@@ -1,6 +1,6 @@
 # TapahtumaSovellus
 
-Tapahtumasovelluksesssa voit lisätä tapahtumia karttalle. Tapahtumiin voit merkitä ajankohdan, linkkejä, hinnan. Käyttäjät voivat ilmoittautua eri tapahtumiin, jokaisesta tapahtumasta löytyy ilmoittautuneiden käyttäjien tietoja ja yhteenvetoja.
+Tapahtumasovelluksesssa voit lisätä tapahtumia karttalle. Tapahtumiin voit merkitä ajankohdan, linkkejä, hinnan. Käyttäjät voivat ilmoittautua eri tapahtumiin, jokaisesta tapahtumasta löytyy ilmoittautuneiden käyttäjien tietoja ja yhteenvetoja. Sovellukseen pääset [tästä](https://tapahtuma-sovellus.herokuapp.com).
 
 # Sovelluksen toiminta tarkemmin
 
@@ -13,3 +13,4 @@ Tapahtumasovelluksesssa voit lisätä tapahtumia karttalle. Tapahtumiin voit mer
 - Normaali Käyttäjä voi poistaa oman tapahtumansa
 - Admin käyttäjä voi poistaa minkä tahansa tapahtuman
 - Admin käyttäjä voi tehdä normaalista käyttäjästä admin käyttäjän
+
