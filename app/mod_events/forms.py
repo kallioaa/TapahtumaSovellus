@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta, date
-
+from flask import session
 from flask.app import Flask
 from app import gmaps
 from flask_wtf import FlaskForm
@@ -12,19 +12,24 @@ def validate_address(form, field):
     address = field.data
     coordinates = gmaps.geocode(address)
     if not coordinates:
+        session["event address"] = None
         raise ValueError("Address not found")
     form.meta = coordinates[0]["geometry"]["location"]
 
 
 class NameForm(FlaskForm):
-    name = StringField("name", validators=[InputRequired()])
+    event_name = StringField("Event name", validators=[InputRequired()])
     submit = SubmitField('Confirm Name', validators=[])
 
 
 class AddressForm(FlaskForm):
     address = StringField("address", validators=[
                           InputRequired(), validate_address])
-    submit = SubmitField("Submit address")
+    submit = SubmitField("Search address")
+
+
+class ConfirmAddressForm(FlaskForm):
+    submit = SubmitField("Confirm address", validators=[])
 
 
 class StartAndEndTimeForm(FlaskForm):

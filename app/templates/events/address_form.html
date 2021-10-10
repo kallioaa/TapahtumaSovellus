@@ -2,18 +2,24 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %} {{ title }} {% endblock %}
 {% block head %} {{ map.js }} {% endblock %}
+{% block navbar %}
+{{nav.my_nav_bar.render()}}
+{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row">
         <div class="col">
             <div class="card"></div>
                 <h4 class="card-title mb-4 mt-1">{{ title }}</h4>
-                {{ wtf.quick_form(form) }}
+                {{ wtf.quick_form(address_form) }}
             </div> <!-- card.// -->
             {% if map %}
             <div id="map-container-google-3" class="z-depth-1-half map-container-3">
                 {{ map.html }}
             </div>
+            {% endif %}
+            {% if confirm_address_form %}
+            {{ wtf.quick_form(confirm_address_form) }}
             {% endif %}
         </div>
     </div>

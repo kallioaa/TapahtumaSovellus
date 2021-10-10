@@ -1,3 +1,4 @@
+from app.nav_bar import nav
 from flask import Flask, render_template
 import googlemaps
 from flask_bootstrap import Bootstrap
@@ -27,6 +28,9 @@ gmaps = googlemaps.Client(key=app.config.get("GOOGLEMAPS_KEY"))
 def not_found(error):
     return render_template("404.html"), 404
 
+
+# initalize navbar
+nav.init_app(app)
 
 from app.mod_auth.controllers import mod_auth  # nopep8
 from app.mod_map.controllers import mod_map  # nopep8

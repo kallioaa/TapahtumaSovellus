@@ -2,6 +2,9 @@
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %} Map {% endblock %}
 {% block head %} {{ map.js }} {% endblock %}
+{% block navbar %}
+{{nav.my_nav_bar.render()}}
+{% endblock %}
 {% block content %}
 {% if session.user_id%}
 {{ map.html }}
