@@ -1,7 +1,7 @@
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 {% block title %} {{ title }} {% endblock %}
-{% block head %} {{ map.js }} {% endblock %}
+{% block head %} {% if map %} {{ map.js }} {% endif %} {% endblock %}
 {% block navbar %}
 {{nav.my_nav_bar.render()}}
 {% endblock %}
@@ -17,9 +17,6 @@
             <div id="map-container-google-3" class="z-depth-1-half map-container-3">
                 {{ map.html }}
             </div>
-            {% endif %}
-            {% if confirm_address_form %}
-            {{ wtf.quick_form(confirm_address_form) }}
             {% endif %}
         </div>
     </div>

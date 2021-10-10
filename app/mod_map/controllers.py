@@ -11,8 +11,7 @@ def map_view():
     # creating a map in the view
     map = Map(
         identifier="view-side",
-        lat=37.4419,
-        lng=-122.1419,
-        markers=[(37.4419, -122.1419)]
+        lat=60.192059,
+        lng=24.945831
     )
     return render_template('map/map.html', map=map)

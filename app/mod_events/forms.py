@@ -9,10 +9,11 @@ from wtforms.validators import InputRequired, ValidationError
 
 
 def validate_address(form, field):
-    address = field.data
+    address = form["address"].data
     coordinates = gmaps.geocode(address)
     if not coordinates:
-        session["event address"] = None
+        session.pop("event_address", None)
+        form.meta = None
         raise ValueError("Address not found")
     form.meta = coordinates[0]["geometry"]["location"]
 
@@ -24,12 +25,12 @@ class NameForm(FlaskForm):
 
 class AddressForm(FlaskForm):
     address = StringField("address", validators=[
-                          InputRequired(), validate_address])
-    submit = SubmitField("Search address")
+                          InputRequired()])
+    submit = SubmitField("Search address", validators=[validate_address])
 
 
 class ConfirmAddressForm(FlaskForm):
-    submit = SubmitField("Confirm address", validators=[])
+    submit = SubmitField("Confirm address", validators=[validate_address])
 
 
 class StartAndEndTimeForm(FlaskForm):

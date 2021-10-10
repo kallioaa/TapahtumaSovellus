@@ -32,7 +32,7 @@ def new_event_address():
             lng=lng,
             markers=[(lat, lng)]
         )
-        return render_template("events/address_form.html", address_form=address_form, confirm_address_form=confirm_address_form, map=map, title=title)
+        return render_template("events/address_form.html", address_form=address_form, map=map, title=title)
     if confirm_address_form.validate_on_submit():
         session["lat"] = address_form.meta["lat"]
         session["let"] = address_form.meta["lng"]
