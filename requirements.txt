@@ -9,9 +9,11 @@ email-validator==1.1.3
 Flask==2.0.1
 Flask-Bootstrap==3.3.7.1
 flask-googlemaps==0.4.0
+flask-nav==0.6
 Flask-SQLAlchemy==2.5.1
 Flask-WTF==0.15.1
 ghp-import==2.0.2
+googlemaps==4.5.3
 greenlet==1.1.1
 gunicorn==20.1.0
 htmlmin==0.1.12
