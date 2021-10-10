@@ -6,6 +6,7 @@
 {{nav.my_nav_bar.render()}}
 {% endblock %}
 {% block content %}
+{% if session.user_id%}
 <div class="container">
     <div class="row">
         <div class="col">
@@ -21,4 +22,8 @@
         </div>
     </div>
 </div>
+{% else %}
+<p> Please login first.</p>
+<a href="{{ url_for('auth.log_in') }}" class="text-info"> Login </a>
+{% endif %}
 {% endblock %}
