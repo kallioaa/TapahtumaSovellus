@@ -16,5 +16,5 @@ def my_nav_bar():
     return Navbar(
         'Event App',
         View('Map', "map.map_view"),
-        View('Create Event', "events.new_event_name"),
+        View('Create Event', "new_event.new_event_name"),
     )

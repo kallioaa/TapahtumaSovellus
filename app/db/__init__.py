@@ -1,4 +1,3 @@
-from flask import config
 from flask_sqlalchemy import SQLAlchemy
 from app import app
 from os import getenv
@@ -11,17 +10,17 @@ is_prod = getenv('IS_HEROKU', None)
 if not is_prod:
 
     fd = open(app.config.get("SQL_TABLES_SCHEMA"), 'r')
-    sqlFile = fd.read()
+    sql_file = fd.read()
     fd.close()
 
     # sql commands
-    sqlCommands = sqlFile.split(';')
+    sql_commands = sql_file.split(';')
 
     # dropping empty commands
-    sqlCommands = list(filter(None, sqlCommands))
+    sql_commands = list(filter(None, sql_commands))
 
     # creating each table
-    for command in sqlCommands:
+    for command in sql_commands:
         db.session.execute(command + ";")
 
     db.session.commit()

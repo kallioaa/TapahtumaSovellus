@@ -6,11 +6,6 @@
 {{nav.my_nav_bar.render()}}
 {% endblock %}
 {% block content %}
-{% if session.user_id%}
 {{ map.html }}
 <a href="{{ url_for('auth.log_out') }}" class="text-info"> Log Out </a>
-{% else %}
-<p> Please login first.</p>
-<a href="{{ url_for('auth.log_in') }}" class="text-info"> Login </a>
-{% endif %}
 {% endblock %}

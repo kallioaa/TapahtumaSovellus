@@ -22,7 +22,7 @@ def email_exists(email):
 # adds a new user to the database
 
 
-def add_to_database(username, password_hashed, email):
+def add_user_to_database(username, password_hashed, email):
     sql = "INSERT INTO USERS (username, password, email) values (:username, :password, :email)"
     db.session.execute(sql, {"username": username,
                              "password": password_hashed, "email": email})

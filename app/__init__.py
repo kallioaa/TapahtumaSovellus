@@ -34,8 +34,8 @@ nav.init_app(app)
 
 from app.mod_auth.controllers import mod_auth  # nopep8
 from app.mod_map.controllers import mod_map  # nopep8
-from app.mod_events.controllers import mod_events  # nopep8
+from app.mod_new_event.controllers import mod_new_event  # nopep8
 
 app.register_blueprint(mod_auth)
 app.register_blueprint(mod_map)
-app.register_blueprint(mod_events)
+app.register_blueprint(mod_new_event)

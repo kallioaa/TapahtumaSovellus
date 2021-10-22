@@ -1,6 +1,6 @@
 from flask import render_template, redirect, Blueprint, url_for, session
 from app.mod_auth.forms import LoginForm, CreateUserForm
-from app.mod_auth.models import add_to_database, get_user_id
+from app.mod_auth.models import add_user_to_database, get_user_id
 from passlib.hash import pbkdf2_sha256
 
 mod_auth = Blueprint('auth', __name__, url_prefix='/')
@@ -29,7 +29,7 @@ def new_user():
         password = form["password"].data
         password_hashed = pbkdf2_sha256.hash(password)
         email = form["email"].data
-        add_to_database(username, password_hashed, email)
+        add_user_to_database(username, password_hashed, email)
         return redirect(url_for(".log_in"))
     return render_template("auth/new_user.html", form=form)
 

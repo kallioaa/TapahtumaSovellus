@@ -6,24 +6,22 @@
 {{nav.my_nav_bar.render()}}
 {% endblock %}
 {% block content %}
-{% if session.user_id%}
 <div class="container">
     <div class="row">
         <div class="col">
             <div class="card"></div>
                 <h4 class="card-title mb-4 mt-1">{{ title }}</h4>
-                {{ wtf.quick_form(address_form) }}
+                {{ wtf.quick_form(form) }}
             </div> <!-- card.// -->
             {% if map %}
             <div id="map-container-google-3" class="z-depth-1-half map-container-3">
                 {{ map.html }}
             </div>
+            <div>
+                <a href="{{ url_for('new_event.new_event_start_and_end_time') }}"><button class=grey>next</button></a>
+            </div>
             {% endif %}
         </div>
     </div>
 </div>
-{% else %}
-<p> Please login first.</p>
-<a href="{{ url_for('auth.log_in') }}" class="text-info"> Login </a>
-{% endif %}
 {% endblock %}
